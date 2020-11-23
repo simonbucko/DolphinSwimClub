@@ -1,2 +1,2 @@
 # Please write here all file that u will be using, WHICH R NOT PART OF THE PROJECT
-*.class
+out/production/DolphinSwimClub/*.class
