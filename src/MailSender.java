@@ -1,15 +1,17 @@
-import java.util.Properties;
+import com.email.durgesh.Email;
 
 public class MailSender {
-    public void sendMail(String receptient){
-        Properties properties = new Properties();
-        properties.put("mail.smtp.auth","true");
-        properties.put("mail.smtp.starttls.enable","true");
-        properties.put("mail.smtp.host","smtp.gmail.com");
-        properties.put("mail.smtp.port","587");
-        String EMAIL = "dolphin.club.system@gmail.com";
-        String PASSWORD = "dolphinclub123";
-
-
+    public void sendMail(String recipient){
+        try {
+            Email email = new Email("dolphin.club.system@gmail.com", "dolphinclub123");
+            email.setFrom("dolphin.club.system@gmail.com","Dolphin Club");
+            email.setSubject("Testing");
+            email.setContent("<h1>TESTING</h1>", "text/html");
+            email.addRecipient(recipient);
+            email.send();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
+
 }
