@@ -3,12 +3,12 @@ import java.util.Date;
 
 public class MailSender {
 
-    public void sendMail(String recipient){
+    public void sendMail(String name, String surname, String recipient){
         try {
             Email email = new Email("dolphin.club.system@gmail.com", "dolphinclub123");
             email.setFrom("dolphin.club.system@gmail.com","Dolphin Club");
             email.setSubject("Testing");
-            email.setContent("<h1>TESTING</h1>", "text/html");
+            email.setContent(HtmlTemplate.getTemplate(name,surname), "text/html");
             email.addRecipient(recipient);
             email.send();
         }catch (Exception e){
