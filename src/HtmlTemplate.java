@@ -110,7 +110,7 @@ public class HtmlTemplate {
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"h1 pb25\" style=\"color:#444444; font-family:'Merriweather', Georgia,serif; font-size:35px; line-height:42px; text-align:center; padding-bottom:25px;\">Dear " +name+ " " +surname+ ",</td>\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"text-center pb25\" style=\"color:#666666; font-family:Arial,sans-serif; font-size:16px; line-height:30px; text-align:center; padding-bottom:25px;\"> We are writing to you to kindly inform you, that your current membership with Dolphins Swim Club is about to expired on . Therefore, we would like to offer you one of our memberships.</td>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"text-center pb25\" style=\"color:#666666; font-family:Arial,sans-serif; font-size:16px; line-height:30px; text-align:center; padding-bottom:25px;\"> We are writing to you to kindly inform you, that your current membership with Dolphins Swim Club is about to expire on . Therefore, we would like to offer you one of our memberships.</td>\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<!-- Button -->\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
