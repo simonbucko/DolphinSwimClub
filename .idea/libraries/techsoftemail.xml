@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="techsoftemail">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libraries/techsoftemail.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libraries/activation.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libraries/mail.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
