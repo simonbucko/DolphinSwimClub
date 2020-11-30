@@ -17,7 +17,7 @@ public class File_S {
     public static void createFile() {
 
         try {
-            File myObj = new File("C:\\Users\\mikke\\OneDrive\\Dokumenter\\Projekt DolphinClub\\DolphinSwimClub\\src\\File_S.txt");
+            File myObj = new File("file_S.txt");
             if (myObj.createNewFile()) {
                 System.out.println("File_S created: " + myObj.getName());
             } else {

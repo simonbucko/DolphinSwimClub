@@ -2,11 +2,11 @@ import java.util.*;
 import java.time.*;
 public abstract class Swimmer{
 
-    int id;
-    boolean wasNotified;
-    String swimstyle;
-    LocalDate membershipStart = LocalDate.now();
-    LocalDate membershipEnd = membershipStart.plusMonths(12);
+    private int id;
+    private boolean wasNotified;
+    private String swimstyle;
+    private LocalDate membershipStart = LocalDate.now();
+    private LocalDate membershipEnd = membershipStart.plusMonths(12);
 
     public void setId(int id) {
       this.id = id;
