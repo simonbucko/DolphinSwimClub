@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+import java.time.*;
 public class File_S {
 
     private File file = null;
@@ -7,17 +8,12 @@ public class File_S {
     private PrintWriter pw = null;
     private Scanner sc = null;
 
-    public ArrayList<Swimmer> swimmer1 = new ArrayList<Swimmer>();
-    public ArrayList<EliteSwimmer> eliteSwimmer = new ArrayList<EliteSwimmer>();
-
-    public static void main(String [] args){
-        createFile();
-    }
+    private ArrayList<Swimmer> swimmers = new ArrayList<Swimmer>();
 
     public static void createFile() {
 
         try {
-            File myObj = new File("C:\\Users\\mikke\\OneDrive\\Dokumenter\\Projekt DolphinClub\\DolphinSwimClub\\src\\File_S.txt");
+            File myObj = new File("File_S.txt");
             if (myObj.createNewFile()) {
                 System.out.println("File_S created: " + myObj.getName());
             } else {
@@ -29,19 +25,64 @@ public class File_S {
         }
 
     }
-
-    public void clearFile() {
-        try {
-            fw = new FileWriter(file, false);
-            pw = new PrintWriter(fw, false);
-            pw.flush();
-            pw.close();
-            fw.close();
-        }catch (IOException e){
-            System.out.println("An error occurred while clearing a file_S.txt.");
-            e.printStackTrace();
+    public void loadData() throws IOException{
+        
+        sc = new Scanner(file);
+        sc.nextLine();
+        while(sc.hasNext()){
+            int id = sc.nextInt();
+            String name = sc.next();
+            String surName = sc.next();
+            int age = sc.nextInt();
+            int phone = sc.nextInt();
+            String email = sc.next();
+            LocalDate membershipStart = LocalDate.parse(sc.next());
+            LocalDate membershipEnd = LocalDate.parse(sc.next());
+            String type = sc.next();
+            String swimStyle = sc.next();           
+            boolean wasNotified = sc.nextBoolean();
+            
+            switch(type){
+            
+               case "Active":{
+                  //ActiveSwimmer aS = new ActiveSwimmer(id, name, surName, age, phone, email, membershipStart, membershipEnd, type, swimStyle, wasNotified);
+                  //swimmers.add(aS);
+                  break;   
+               }    
+               case "Passive":{
+                  //PassiveSwimmer pS = new PassiveSwimmer(id, name, surName, age, phone, email, membershipStart, membershipEnd, type, swimStyle, wasNotified);
+                  //swimmers.add(pS);
+                  break;
+               }
+            
+               case "Elite":{
+                  //EliteSwimmer eS = new EliteSwimmer(id, name, surName, age, phone, email, membershipStart, membershipEnd, type, swimStyle, wasNotified);
+                  //swimmers.add((Swimmer)eS);
+               break;
+               }
+           }
+            
         }
-        prepareForWriting();
+   }
+   
+    public void eraseFile() throws IOException{
+        FileWriter fw = new FileWriter(file,false);
+        PrintWriter pw = new PrintWriter(fw,true);
+        pw.print("");
+    }
+    
+    public void printAllData(){
+        for (Swimmer swimmer : swimmers){
+            //System.out.println(swimmer.getId() + " " + swimmer.getName() + " " + swimmers.getSurName() + " " + swimmers.getAge() + " " + swimmers.getPhone() + " " + swimmers.getEmail() + " "+ swimmers.getMembershipStart() + " " + swimmers.getMembershipEnd() + " " + swimmers.getType() + " " + swimmers.getSwimStyle() + " " + swimmers.getWasNotified() + " ");
+        }
+    }
+    public void deleteRecord(int index) throws IOException{
+        swimmers.remove(index);
+        eraseFile();
+            for(Swimmer swimmer : swimmers){
+               //System.out.println(swimmer.getId() + " " + swimmer.getName() + " " + swimmers.getSurName() + " " + swimmers.getAge() + " " + swimmers.getPhone() + " " + swimmers.getEmail() + " "+ swimmers.getMembershipStart() + " " + swimmers.getMembershipEnd() + " " + swimmers.getType() + " " + swimmers.getSwimStyle() + " " + swimmers.getWasNotified() + " ");
+            }
+                      
     }
     public void prepareForWriting(){
         try{
@@ -63,44 +104,26 @@ public class File_S {
         for (int i=0; i<ID_OFFSET-nameLength; i++) pw.printf(" ");
     }
     public void printHeader(){
-        pw.printf("SWIMMER'S NAME");
-        printSpaces("SWIMMER'S NAME");
-        pw.printf("SWIMMER ID");
-        printSpaces("SWIMMER ID");
-        pw.printf("CARD ID");
-        printSpaces("CARD ID");
-        pw.printf("CARD BALANCE");
-        printSpaces("CARD BALANCE");
+        pw.printf("ID");
+        printSpaces("ID");
+        pw.printf("NAME");
+        printSpaces("NAME");
+        pw.printf("SURNAME");
+        printSpaces("SURNAME");
+        pw.printf("AGE");
+        printSpaces("AGE");
+        pw.printf("PHONE");
+        printSpaces("PHONE");
+        pw.printf("EMAIL");
+        printSpaces("EMAIL");        
+        pw.printf("MEMBERSHIP STAR");
+        printSpaces("MEMBERSHIP START"); 
+        pw.printf("MEMBERSHIP END");
+        printSpaces("MEMBERSHIP END");       
+        pw.printf("SWIM TYPE");
+        printSpaces("SWIM TYPE");
+        pw.printf("NOTIFIED");
+        printSpaces("NOTIFIED");
         pw.println();
     }
-    /*public ArrayList<Swimmer> getAllRecords(){
-        ArrayList<Swimmer> swimmer = new ArrayList<Swimmer>();
-        sc.nextLine();
-        while(sc.hasNext()){
-            boolean isExisting = false;
-            String name;
-            long userId;
-            long cardId;
-            int balance;
-            name = sc.next();
-            userId = sc.nextLong();
-            cardId = sc.nextLong();
-            balance = sc.nextInt();
-            for (Swimmer cSwimmer : swimmer){
-                if(cSwimmer.getId() == userId){
-                    WashingCard card = new WashingCard(cardId,balance);
-                    cSwimmer.addCard(card);
-                    isExisting = true;
-                }
-            }
-            if(isExisting){
-                continue;
-            }
-            Swimmer swimmer = new Customer(name,userId);
-            WashingCard card = new WashingCard(cardId,balance);
-            customer.addCard(card);
-            customers.add(customer);
-        }
-        return customers;
-    }*/
 }
