@@ -13,7 +13,7 @@ public class File_S {
     public static void createFile() {
 
         try {
-            File myObj = new File("File_S.txt");
+            File myObj = new File("file_S.txt");
             if (myObj.createNewFile()) {
                 System.out.println("File_S created: " + myObj.getName());
             } else {
