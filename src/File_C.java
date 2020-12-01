@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class File_c {
+public class File_C {
 
         public File file = null;
         public Scanner sc = null;
@@ -14,7 +14,7 @@ public class File_c {
 
     private ArrayList<Coach> coaches = new ArrayList<Coach>();
 
-        public createFile() throws IOException {
+        public File_C() throws IOException {
             file = new File("coaches.txt");
             if(!file.exists()) file.createNewFile();
             fw = new FileWriter(file,true);
@@ -96,23 +96,23 @@ public class File_c {
         pw.println();
     }
 
-    public void getCoachById(){
-    for(Coach coach : List) {
-        if(account.getId().equals(someId) {
-            //found it!
-            }
-        }
-    }
-
-    public void getCoachById(String anId)
-    {
-        int arraySize = coaches.size();
-        for(int i=0; i<arraySize; i++) {
-            if (coaches.get(i).getId().equals(anId)) {
-                System.out.println(coaches.get(i));
-            }
-        }
-    }
+//    public void getCoachById(){
+//    for(Coach coach : List) {
+//        if(account.getId().equals(someId) {
+//            //found it!
+//            }
+//        }
+//    }
+//
+//    public void getCoachById(String anId)
+//    {
+//        int arraySize = coaches.size();
+//        for(int i=0; i<arraySize; i++) {
+//            if (coaches.get(i).getId().equals(anId)) {
+//                System.out.println(coaches.get(i));
+//            }
+//        }
+//    }
 }
 
 
