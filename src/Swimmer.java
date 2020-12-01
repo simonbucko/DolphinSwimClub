@@ -5,6 +5,7 @@ public abstract class Swimmer extends Person {
     private int id;
     private boolean wasNotified;
     private String swimStyle;
+    private String type;
     private LocalDate membershipStart = LocalDate.now();
     private LocalDate membershipEnd = membershipStart.plusMonths(12);
 
@@ -33,6 +34,13 @@ public abstract class Swimmer extends Person {
     }
     public String getSwimStyle(){
         return swimStyle;
+    }
+    public void setType(String type) {
+    this.type = type;
+    }
+
+    public String getType() {
+        return type;
     }
 
     public void setMembershipStart(LocalDate sD) {

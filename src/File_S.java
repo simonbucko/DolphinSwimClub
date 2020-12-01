@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.*;
 import java.time.*;
+
 public class File_S {
 
     private File file = null;
@@ -72,15 +73,15 @@ public class File_S {
     }
     
     public void printAllData(){
-        for (Swimmer swimmer : swimmers){
-            //System.out.println(swimmer.getId() + " " + swimmer.getName() + " " + swimmers.getSurName() + " " + swimmers.getAge() + " " + swimmers.getPhone() + " " + swimmers.getEmail() + " "+ swimmers.getMembershipStart() + " " + swimmers.getMembershipEnd() + " " + swimmers.getType() + " " + swimmers.getSwimStyle() + " " + swimmers.getWasNotified() + " ");
+        for (Swimmer swimmers : swimmers){
+            System.out.println(swimmers.getId() + " " + swimmers.getName() + " " + swimmers.getSurname() + " " + swimmers.getAge() + " " + swimmers.getPhone() + " " + swimmers.getEmail() + " "+ swimmers.getMembershipStart() + " " + swimmers.getMembershipEnd() + " " + swimmers.getType() + " " + swimmers.getSwimStyle() + " " + swimmers.getWasNotified() + " ");
         }
     }
     public void deleteRecord(int index) throws IOException{
         swimmers.remove(index);
         eraseFile();
-            for(Swimmer swimmer : swimmers){
-               //System.out.println(swimmer.getId() + " " + swimmer.getName() + " " + swimmers.getSurName() + " " + swimmers.getAge() + " " + swimmers.getPhone() + " " + swimmers.getEmail() + " "+ swimmers.getMembershipStart() + " " + swimmers.getMembershipEnd() + " " + swimmers.getType() + " " + swimmers.getSwimStyle() + " " + swimmers.getWasNotified() + " ");
+            for(Swimmer swimmers : swimmers){
+               System.out.println(swimmers.getId() + " " + swimmers.getName() + " " + swimmers.getSurname() + " " + swimmers.getAge() + " " + swimmers.getPhone() + " " + swimmers.getEmail() + " "+ swimmers.getMembershipStart() + " " + swimmers.getMembershipEnd() + " " + swimmers.getType() + " " + swimmers.getSwimStyle() + " " + swimmers.getWasNotified() + " ");
             }
                       
     }
@@ -126,4 +127,9 @@ public class File_S {
         printSpaces("NOTIFIED");
         pw.println();
     }
+
+    public ArrayList<Swimmer> getSwimmers() {
+        return swimmers;
+    }
+    
 }
