@@ -29,4 +29,10 @@ public class Coach {
     public void setPassword(String newPassword) {
         this.password = newPassword;
     }
+
+    public void displayStudents() {
+        for (int i = 0; i < students.size(); i++) {
+            students.get(i).printData();
+        }
+    }
 }

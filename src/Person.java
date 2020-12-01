@@ -1,9 +1,17 @@
-public class Person {
+public abstract class Person {
     private String name;
     private String email;
     private String phone;
     private int age;
     private String surname;
+
+    public Person(String name, String surname, String phone, String email, int age) {
+        this.name = name;
+        this.surname = surname;
+        this.phone = phone;
+        this.email = email;
+        this.age = age;
+    }
 
     public String getName() {
         return name;

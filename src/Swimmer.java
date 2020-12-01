@@ -1,6 +1,6 @@
 import java.util.*;
 import java.time.*;
-public abstract class Swimmer{
+public abstract class Swimmer extends Person {
 
     private int id;
     private boolean wasNotified;
@@ -8,13 +8,21 @@ public abstract class Swimmer{
     private LocalDate membershipStart = LocalDate.now();
     private LocalDate membershipEnd = membershipStart.plusMonths(12);
 
-    public void setId(int id) {
-      this.id = id;
+    public Swimmer(int id, String swimStyle, String name, String surname, String phone, String email, int age) {
+        super(name, surname, phone, email, age);
+        this.id = id;
+        this.swimStyle = swimStyle;
     }
-    public int getId(){
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
         return id;
     }
-    public void setWasNotified(boolean wNotified){
+
+    public void setWasNotified(boolean wNotified) {
         this.wasNotified = wNotified;
     }
     public boolean getWasNotified(){
@@ -26,14 +34,20 @@ public abstract class Swimmer{
     public String getSwimStyle(){
         return swimStyle;
     }
-    public void setMembershipStart(LocalDate sD){
+
+    public void setMembershipStart(LocalDate sD) {
         this.membershipStart = sD;
     }
-    public LocalDate getMembershipStart(){
+
+    public LocalDate getMembershipStart() {
         return membershipStart;
     }
-    public LocalDate getMembershipEnd(){
+
+    public LocalDate getMembershipEnd() {
         return membershipEnd;
     }
 
+    public void printData() {
+        System.out.println(this.id + " " + getName() + " " + getSurname() + " " + getAge() + " " + getEmail() + " " + getPhone());
+    }
 }
