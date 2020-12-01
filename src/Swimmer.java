@@ -9,10 +9,11 @@ public abstract class Swimmer extends Person {
     private LocalDate membershipStart = LocalDate.now();
     private LocalDate membershipEnd = membershipStart.plusMonths(12);
 
-    public Swimmer(int id, String swimStyle, String name, String surname, String phone, String email, int age) {
+    public Swimmer(int id, String swimStyle, String name, String surname, String phone, String email, int age, boolean wasNotified) {
         super(name, surname, phone, email, age);
         this.id = id;
         this.swimStyle = swimStyle;
+        this.wasNotified = wasNotified;
     }
 
     public void setId(int id) {
