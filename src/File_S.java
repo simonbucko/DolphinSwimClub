@@ -46,7 +46,7 @@ public class File_S {
             switch(type){
             
                case "Active":{
-                  //ActiveSwimmer aS = new ActiveSwimmer(id, name, surName, age, phone, email, membershipStart, membershipEnd, type, swimStyle, wasNotified);
+                  //ActiveSW aS = new ActiveSW(id, name, surName, age, phone, email, membershipStart, membershipEnd, type, swimStyle, wasNotified);
                   //swimmers.add(aS);
                   break;   
                }    
@@ -84,42 +84,22 @@ public class File_S {
             System.out.println(swimmers.getId() + " " + swimmers.getName() + " " + swimmers.getSurname() + " " + swimmers.getAge() + " " + swimmers.getPhone() + " " + swimmers.getEmail() + " "+ swimmers.getMembershipStart() + " " + swimmers.getMembershipEnd() + " " + swimmers.getType() + " " + swimmers.getSwimStyle() + " " + swimmers.getWasNotified() + " ");
         }                
     }
-    public void saveToFile(){
-         try {
+
+    public void saveToFile(int id, String name, String surname, int age, int phone, String email, LocalDate membershipStart, LocalDate membershipEnd, String type, String swimStyle, boolean wasNotified){
+        try {
             eraseFile();
-         }
-         catch(IOException e) {
-             e.printStackTrace();
-         }
-         
-         prepareForWriting();
-         printHeader();
-         
-       /*  try {
-            
-            //pw.write(printNewRecords());
-            pw.close();
-            System.out.println("Successfully wrote to the file.");
-        } catch (IOException e) {
-            System.out.println("An error occurred.");
+        }
+        catch(IOException e) {
             e.printStackTrace();
-         }*/
-    }
-    /*public void printNewRecords(int id, String name, String surname, int age, int phone, String email, LocalDate membershipStart, LocalDate membershipEnd, String type, String swimStyle, boolean wasNotified){
-            pw.println(id + " " + name + " " + surname + " " + age + " " + phone + " " + email + " " + membershipStart + " " + membershipEnd + " " + type + " " + swimStyle + " " + wasNotfied + " ");
-            id.add(id);
-            name.add(name);
-            surname.add(surname);
-            age.add(age);
-            phone.add(phone);
-            email.add(email);
-            membershipStart.add(membershipStart);
-            membershipEnd.add(membershipEnd);
-            type.add(type);
-            swimStyle.add(swimStyle);           
-            wasNotified.add(wasNotfied);
+        }
+
+        prepareForWriting();
+        printHeader();
+
+        pw.println(id + " " + name + " " + surname + " " + age + " " + phone + " " + email + " " + membershipStart + " " + membershipEnd + " " + type + " " + swimStyle + " " + wasNotified + " ");
+        pw.close();
     
-    }*/
+    }
     public void prepareForWriting(){
         try{
             fw = new FileWriter(file, true);
