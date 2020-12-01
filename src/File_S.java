@@ -1,14 +1,21 @@
 import java.io.*;
 import java.util.*;
 import java.time.*;
+
 public class File_S {
 
     private File file = null;
     private FileWriter fw = null;
     private PrintWriter pw = null;
     private Scanner sc = null;
-
     private ArrayList<Swimmer> swimmers = new ArrayList<Swimmer>();
+
+    public File_S() throws IOException {
+        file = new File("swimmers.txt");
+        if(!file.exists()) file.createNewFile();
+        fw = new FileWriter(file,true);
+        pw = new PrintWriter(fw,true);
+    }
 
     public static void createFile() {
 
@@ -34,7 +41,7 @@ public class File_S {
             String name = sc.next();
             String surName = sc.next();
             int age = sc.nextInt();
-            int phone = sc.nextInt();
+            String phone = sc.next();
             String email = sc.next();
             LocalDate membershipStart = LocalDate.parse(sc.next());
             LocalDate membershipEnd = LocalDate.parse(sc.next());
@@ -45,19 +52,19 @@ public class File_S {
             switch(type){
             
                case "Active":{
-                  //ActiveSwimmer aS = new ActiveSwimmer(id, name, surName, age, phone, email, membershipStart, membershipEnd, type, swimStyle, wasNotified);
-                  //swimmers.add(aS);
+                  ActiveSwimmer aS = new ActiveSwimmer(id, swimStyle, name, surName, phone, email, age,wasNotified);
+                  swimmers.add(aS);
                   break;   
                }    
                case "Passive":{
-                  //PassiveSwimmer pS = new PassiveSwimmer(id, name, surName, age, phone, email, membershipStart, membershipEnd, type, swimStyle, wasNotified);
-                  //swimmers.add(pS);
+                  PassiveSwimmer pS = new PassiveSwimmer(id, swimStyle, name, surName, phone, email, age,wasNotified);
+                  swimmers.add(pS);
                   break;
                }
             
                case "Elite":{
-                  //EliteSwimmer eS = new EliteSwimmer(id, name, surName, age, phone, email, membershipStart, membershipEnd, type, swimStyle, wasNotified);
-                  //swimmers.add((Swimmer)eS);
+                  EliteSwimmer eS = new EliteSwimmer(id, swimStyle, name, surName, phone, email, age,wasNotified);
+                  swimmers.add((Swimmer)eS);
                break;
                }
            }
@@ -73,28 +80,43 @@ public class File_S {
     
     public void printAllData(){
         for (Swimmer swimmer : swimmers){
-            //System.out.println(swimmer.getId() + " " + swimmer.getName() + " " + swimmers.getSurName() + " " + swimmers.getAge() + " " + swimmers.getPhone() + " " + swimmers.getEmail() + " "+ swimmers.getMembershipStart() + " " + swimmers.getMembershipEnd() + " " + swimmers.getType() + " " + swimmers.getSwimStyle() + " " + swimmers.getWasNotified() + " ");
+            System.out.println(swimmer.getId() + " " + swimmer.getName() + " " + swimmer.getSurname() + " " + swimmer.getAge() + " " + swimmer.getPhone() + " " + swimmer.getEmail() + " "+ swimmer.getMembershipStart() + " " + swimmer.getMembershipEnd() + " " + ((swimmer instanceof ActiveSwimmer)?"Active":(swimmer instanceof PassiveSwimmer)?"Passive":"Elite") + " " + swimmer.getSwimStyle() + " " + swimmer.getWasNotified() + " ");
         }
     }
     public void deleteRecord(int index) throws IOException{
         swimmers.remove(index);
         eraseFile();
-            for(Swimmer swimmer : swimmers){
-               //System.out.println(swimmer.getId() + " " + swimmer.getName() + " " + swimmers.getSurName() + " " + swimmers.getAge() + " " + swimmers.getPhone() + " " + swimmers.getEmail() + " "+ swimmers.getMembershipStart() + " " + swimmers.getMembershipEnd() + " " + swimmers.getType() + " " + swimmers.getSwimStyle() + " " + swimmers.getWasNotified() + " ");
-            }
-                      
+        for(Swimmer swimmer : swimmers){
+            System.out.println(swimmer.getId() + " " + swimmer.getName() + " " + swimmer.getSurname() + " " + swimmer.getAge() + " " + swimmer.getPhone() + " " + swimmer.getEmail() + " "+ swimmer.getMembershipStart() + " " + swimmer.getMembershipEnd() + " " + swimmer.getType() + " " + swimmer.getSwimStyle() + " " + swimmer.getWasNotified() + " ");
+        }                
+    }
+
+    public void saveToFile(int id, String name, String surname, int age, int phone, String email, LocalDate membershipStart, LocalDate membershipEnd, String type, String swimStyle, boolean wasNotified){
+        try {
+            eraseFile();
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+        }
+
+        prepareForWriting();
+        printHeader();
+
+        pw.println(id + " " + name + " " + surname + " " + age + " " + phone + " " + email + " " + membershipStart + " " + membershipEnd + " " + type + " " + swimStyle + " " + wasNotified + " ");
+        pw.close();
+    
     }
     public void prepareForWriting(){
         try{
             fw = new FileWriter(file, true);
         }catch (IOException e){
-            System.out.println("An error occurred while creating a file writer for a file_C.txt.");
+            System.out.println("An error occurred while creating a file writer for a file_S.txt.");
             e.printStackTrace();
         }
         try {
             pw = new PrintWriter(fw,true);
         }catch (Exception e){
-            System.out.println("An error occurred while creating a print writer for a file_C.txt.");
+            System.out.println("An error occurred while creating a print writer for a file_S.txt.");
             e.printStackTrace();
         }
     }
@@ -119,11 +141,18 @@ public class File_S {
         pw.printf("MEMBERSHIP STAR");
         printSpaces("MEMBERSHIP START"); 
         pw.printf("MEMBERSHIP END");
-        printSpaces("MEMBERSHIP END");       
+        printSpaces("MEMBERSHIP END");
+        pw.printf("TYPE");
+        printSpaces("TYPE");
         pw.printf("SWIM TYPE");
         printSpaces("SWIM TYPE");
         pw.printf("NOTIFIED");
         printSpaces("NOTIFIED");
         pw.println();
     }
+
+    public ArrayList<Swimmer> getSwimmers() {
+        return swimmers;
+    }
+    
 }

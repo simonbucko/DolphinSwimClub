@@ -17,6 +17,37 @@ public class PrintScreen {
         }while (choise < 1 || choise > maxValue);
         return choise;
     }
+
+    public int getAge(int maxValue){
+        Scanner sc = new Scanner(System.in);
+        int choise = -1;
+        boolean isWrong = false;
+        do {
+            if (isWrong) System.out.println("THE INPUTTED VALUE IS NOT A NUMBER OR IT IS NOT IN RANGE BETWEEN 0-100:");
+            if (sc.hasNextInt()) {
+                choise = sc.nextInt();
+            }
+            else {
+                sc.next();
+            }
+            isWrong = true;
+        }while (choise < 5 || choise > maxValue);
+        return choise;
+    }
+
+    public String getNewPassword(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("PLEASE INPUT YOUR NEW PASSWORD: ");
+        String password = sc.next();
+        System.out.println("PLEASE INPUT YOUR NEW PASSWORD AGAIN: ");
+        String retypedPassword = sc.next();
+        boolean match = true;
+//        do{
+//            if(!match)
+//        }
+        return "";
+    }
+
     //MENU
     public void printMenu(){
         System.out.println("**************************************");
@@ -50,9 +81,24 @@ public class PrintScreen {
             System.out.println("[4] Exit");
             int choice = getChoice(4);
             boolean exit = false;
+            Scanner sc = new Scanner(System.in);
             switch (choice){
                 case 1:{
-                    System.out.println("adding coach");
+                    System.out.println("PLEASE INPUT THE NAME: ");
+                    String name = sc.next();
+                    System.out.println("PLEASE INPUT THE SURNAME: ");
+                    String surname = sc.next();
+                    System.out.println("PLEASE INPUT THE PHONE NUMBER: ");
+                    String phone = sc.next();
+                    System.out.println("PLEASE INPUT THE EMAIL: ");
+                    String email = sc.next();
+                    System.out.println("PLEASE INPUT THE AGE: ");
+                    int age = getAge(100);
+                    System.out.println("PLEASE INPUT PREFERRED SWIMMING STYLE: ");
+                    String style = sc.next();
+                    System.out.println("PLEASE INPUT PASSWORD: ");
+                    String password = sc.next();
+                    //create coach from params
                     break;
                 }
                 case 2:{
@@ -60,7 +106,6 @@ public class PrintScreen {
                     break;
                 }
                 case 3:{
-                    System.out.println("changing password");
                     break;
                 }
                 case 4:{exit = true;}
