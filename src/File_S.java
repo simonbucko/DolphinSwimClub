@@ -80,22 +80,57 @@ public class File_S {
     public void deleteRecord(int index) throws IOException{
         swimmers.remove(index);
         eraseFile();
-            for(Swimmer swimmers : swimmers){
-               System.out.println(swimmers.getId() + " " + swimmers.getName() + " " + swimmers.getSurname() + " " + swimmers.getAge() + " " + swimmers.getPhone() + " " + swimmers.getEmail() + " "+ swimmers.getMembershipStart() + " " + swimmers.getMembershipEnd() + " " + swimmers.getType() + " " + swimmers.getSwimStyle() + " " + swimmers.getWasNotified() + " ");
-            }
-                      
+        for(Swimmer swimmers : swimmers){
+            System.out.println(swimmers.getId() + " " + swimmers.getName() + " " + swimmers.getSurname() + " " + swimmers.getAge() + " " + swimmers.getPhone() + " " + swimmers.getEmail() + " "+ swimmers.getMembershipStart() + " " + swimmers.getMembershipEnd() + " " + swimmers.getType() + " " + swimmers.getSwimStyle() + " " + swimmers.getWasNotified() + " ");
+        }                
     }
+    public void saveToFile(){
+         try {
+            eraseFile();
+         }
+         catch(IOException e) {
+             e.printStackTrace();
+         }
+         
+         prepareForWriting();
+         printHeader();
+         
+       /*  try {
+            
+            //pw.write(printNewRecords());
+            pw.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+         }*/
+    }
+    /*public void printNewRecords(int id, String name, String surname, int age, int phone, String email, LocalDate membershipStart, LocalDate membershipEnd, String type, String swimStyle, boolean wasNotified){
+            pw.println(id + " " + name + " " + surname + " " + age + " " + phone + " " + email + " " + membershipStart + " " + membershipEnd + " " + type + " " + swimStyle + " " + wasNotfied + " ");
+            id.add(id);
+            name.add(name);
+            surname.add(surname);
+            age.add(age);
+            phone.add(phone);
+            email.add(email);
+            membershipStart.add(membershipStart);
+            membershipEnd.add(membershipEnd);
+            type.add(type);
+            swimStyle.add(swimStyle);           
+            wasNotified.add(wasNotfied);
+    
+    }*/
     public void prepareForWriting(){
         try{
             fw = new FileWriter(file, true);
         }catch (IOException e){
-            System.out.println("An error occurred while creating a file writer for a file_C.txt.");
+            System.out.println("An error occurred while creating a file writer for a file_S.txt.");
             e.printStackTrace();
         }
         try {
             pw = new PrintWriter(fw,true);
         }catch (Exception e){
-            System.out.println("An error occurred while creating a print writer for a file_C.txt.");
+            System.out.println("An error occurred while creating a print writer for a file_S.txt.");
             e.printStackTrace();
         }
     }
