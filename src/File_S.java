@@ -8,8 +8,14 @@ public class File_S {
     private FileWriter fw = null;
     private PrintWriter pw = null;
     private Scanner sc = null;
-
     private ArrayList<Swimmer> swimmers = new ArrayList<Swimmer>();
+
+    public File_S() throws IOException {
+        file = new File("swimmers.txt");
+        if(!file.exists()) file.createNewFile();
+        fw = new FileWriter(file,true);
+        pw = new PrintWriter(fw,true);
+    }
 
     public static void createFile() {
 
@@ -35,7 +41,7 @@ public class File_S {
             String name = sc.next();
             String surName = sc.next();
             int age = sc.nextInt();
-            int phone = sc.nextInt();
+            String phone = sc.next();
             String email = sc.next();
             LocalDate membershipStart = LocalDate.parse(sc.next());
             LocalDate membershipEnd = LocalDate.parse(sc.next());
@@ -46,19 +52,19 @@ public class File_S {
             switch(type){
             
                case "Active":{
-                  //ActiveSW aS = new ActiveSW(id, name, surName, age, phone, email, membershipStart, membershipEnd, type, swimStyle, wasNotified);
-                  //swimmers.add(aS);
+                  ActiveSwimmer aS = new ActiveSwimmer(id, swimStyle, name, surName, phone, email, age);
+                  swimmers.add(aS);
                   break;   
                }    
                case "Passive":{
-                  //PassiveSwimmer pS = new PassiveSwimmer(id, name, surName, age, phone, email, membershipStart, membershipEnd, type, swimStyle, wasNotified);
-                  //swimmers.add(pS);
+                  PassiveSwimmer pS = new PassiveSwimmer(id, swimStyle, name, surName, phone, email, age);
+                  swimmers.add(pS);
                   break;
                }
             
                case "Elite":{
-                  //EliteSwimmer eS = new EliteSwimmer(id, name, surName, age, phone, email, membershipStart, membershipEnd, type, swimStyle, wasNotified);
-                  //swimmers.add((Swimmer)eS);
+                  EliteSwimmer eS = new EliteSwimmer(id, swimStyle, name, surName, phone, email, age);
+                  swimmers.add((Swimmer)eS);
                break;
                }
            }
@@ -73,8 +79,8 @@ public class File_S {
     }
     
     public void printAllData(){
-        for (Swimmer swimmers : swimmers){
-            System.out.println(swimmers.getId() + " " + swimmers.getName() + " " + swimmers.getSurname() + " " + swimmers.getAge() + " " + swimmers.getPhone() + " " + swimmers.getEmail() + " "+ swimmers.getMembershipStart() + " " + swimmers.getMembershipEnd() + " " + swimmers.getType() + " " + swimmers.getSwimStyle() + " " + swimmers.getWasNotified() + " ");
+        for (Swimmer swimmer : swimmers){
+            System.out.println(swimmer.getId() + " " + swimmer.getName() + " " + swimmer.getSurname() + " " + swimmer.getAge() + " " + swimmer.getPhone() + " " + swimmer.getEmail() + " "+ swimmer.getMembershipStart() + " " + swimmer.getMembershipEnd() + " " + swimmer.getType() + " " + swimmer.getSwimStyle() + " " + swimmer.getWasNotified() + " ");
         }
     }
     public void deleteRecord(int index) throws IOException{
@@ -135,7 +141,9 @@ public class File_S {
         pw.printf("MEMBERSHIP STAR");
         printSpaces("MEMBERSHIP START"); 
         pw.printf("MEMBERSHIP END");
-        printSpaces("MEMBERSHIP END");       
+        printSpaces("MEMBERSHIP END");
+        pw.printf("TYPE");
+        printSpaces("TYPE");
         pw.printf("SWIM TYPE");
         printSpaces("SWIM TYPE");
         pw.printf("NOTIFIED");
