@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Coach {
+public class Coach extends Person {
 
     enum Discipline {
         FREESTYLE,
