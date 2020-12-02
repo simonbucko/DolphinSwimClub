@@ -44,7 +44,7 @@ public class File_c {
 
     public void printAllData(){
         for (Coach coach : coaches){
-            System.out.println(coach.getId() + " " + coach.getName() + " " + coach.getSurName() + " " + coach.getAge() + " " + coach.getPhone() + " " + coach.getEmail() + " " + coach.getSwimStyle() + " + ");
+            System.out.println(coach.getId() + " " + coach.getName() + " " + coach.getSurname() + " " + coach.getAge() + " " + coach.getPhone() + " " + coach.getEmail() + " " + coach.getSwimmingStyle() + " + ");
         }
     }
 
@@ -52,7 +52,7 @@ public class File_c {
         coaches.remove(index);
         eraseFile();
         for(Coach coach : coaches){
-            System.out.println(coach.getId() + " " + coach.getName() + " " + coach.getSurName() + " " + coach.getAge() + " " + coach.getPhone() + " " + coach.getEmail() + " " + coach.getSwimStyle() + " + ")
+            System.out.println(coach.getId() + " " + coach.getName() + " " + coach.getSurname() + " " + coach.getAge() + " " + coach.getPhone() + " " + coach.getEmail() + " " + coach.getSwimmingStyle() + " + ");
         }
 
     }
