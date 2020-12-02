@@ -7,14 +7,14 @@ import java.util.Scanner;
 
 public class File_c {
 
-        public File file = null;
-        public Scanner sc = null;
-        public FileWriter fw = null;
-        public PrintWriter pw = null;
+    public File file = null;
+    public Scanner sc = null;
+    public FileWriter fw = null;
+    public PrintWriter pw = null;
 
     private ArrayList<Coach> coaches = new ArrayList<Coach>();
 
-        public createFile() throws IOException {
+        public void createFile() throws IOException {
             file = new File("coaches.txt");
             if(!file.exists()) file.createNewFile();
             fw = new FileWriter(file,true);
@@ -112,14 +112,12 @@ public class File_c {
         pw.println();
     }
 
-    public void getCoachById(String anId)
+    public Coach getCoachById(int id)
     {
-        int arraySize = coaches.size();
-        for(int i=0; i<arraySize; i++) {
-            if (coaches.get(i).getId().equals(anId)) {
-                System.out.println(coaches.get(i));
-            }
+        for(int i=0; i<coaches.size(); i++) {
+            if(coaches.get(i).getId() == id) return coaches.get(i);
         }
+        return null;
     }
 
     public ArrayList<Coach> getCoaches() {
