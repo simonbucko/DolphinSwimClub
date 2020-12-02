@@ -21,7 +21,7 @@ public class Chairman extends Person {
         this.password = newPassword;
     }
 
-    public void addCoach(File_c file_c, int id, String swimStyle, String name, String surname, String phone, String email, int age, String password) {
+    public void addCoach(File_C file_c, int id, String swimStyle, String name, String surname, String phone, String email, int age, String password) {
         Coach coach = new Coach(id,swimStyle,name,surname,phone,email,age,password);
         file_c.getCoaches().add(coach);
     }

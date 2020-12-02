@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class File_c {
+public class File_C {
 
     public File file = null;
     public Scanner sc = null;
