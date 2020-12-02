@@ -2,6 +2,8 @@ import java.util.ArrayList;
 
 public class Coach extends Person {
 
+    public Coach(String name, String surname, String phone, String email, int age, String password)
+
     enum Discipline {
         FREESTYLE,
         CRAWL,

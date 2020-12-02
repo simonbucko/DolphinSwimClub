@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 public class Chairman extends Person {
 
+    ArrayList<Coach> coachList = new ArrayList<>();
+
     private String password = "password";
 
     public String getPassword() {
@@ -12,7 +14,7 @@ public class Chairman extends Person {
     }
 
     public void addCoach(String name, String surname, int age, String swimmStyle, String password) {
-        ArrayList<String> coachList = new ArrayList<>(name, surname, age, swimmStyle, password);
+        Coach coach = new Coach();
         coachList.add(coach);
     }
 
