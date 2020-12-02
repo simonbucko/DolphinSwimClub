@@ -121,6 +121,10 @@ public class File_c {
             }
         }
     }
+
+    public ArrayList<Coach> getCoaches() {
+        return coaches;
+    }
 }
 
 

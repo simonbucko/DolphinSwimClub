@@ -2,7 +2,12 @@ import java.util.ArrayList;
 
 public class Coach extends Person {
 
-    public Coach(String name, String surname, String phone, String email, int age, String password)
+    public Coach(int id, String swimmingStyle, String name, String surname, String phone, String email, int age, String password){
+        super(name,surname,phone,email,age);
+        this.id =id;
+        this.swimmingStyle = swimmingStyle;
+        this.password = password;
+    }
 
     enum Discipline {
         FREESTYLE,
