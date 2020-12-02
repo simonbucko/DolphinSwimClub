@@ -1,18 +1,30 @@
 public class BestResult implements Comparable {
-    private String location;
-    private String place;
-    private long milliseconds = 99999999;
-    public Swimmer swimmer;
 
-    public BestResult(int minutes, int seconds, int milliseconds, Swimmer swimmer) {
-        this.location = null;
-        this.place = null;
-        this.milliseconds = convertTimeToMilli(minutes, seconds, milliseconds);
-        this.swimmer = swimmer;
+    enum Discipline {
+        FREESTYLE,
+        CRAWL,
+        BREASTSTROKE,
+        BACKSTROKE,
+        BUTTERFLY
     }
 
-    public BestResult(String location, String place, int minutes, int seconds, int milliseconds, Swimmer swimmer) {
-        this(minutes, seconds, milliseconds, swimmer);
+    private String location;
+    private int place;
+    private long milliseconds = 99999999;
+    private int swimmerId;
+    private Discipline discipline;
+
+
+    public BestResult(Discipline discipline, int minutes, int seconds, int milliseconds, EliteSwimmer swimmer) {
+        this.discipline = discipline;
+        this.location = null;
+        this.place = 0;
+        this.milliseconds = convertTimeToMilli(minutes, seconds, milliseconds);
+        this.swimmerId = swimmer.getId();
+    }
+
+    public BestResult(Discipline discipline, String location, int place, int minutes, int seconds, int milliseconds, EliteSwimmer swimmer) {
+        this(discipline, minutes, seconds, milliseconds, swimmer);
         this.location = location;
         this.place = place;
     }
@@ -36,7 +48,7 @@ public class BestResult implements Comparable {
         return location;
     }
 
-    public String getPlace() {
+    public int getPlace() {
         return place;
     }
 
@@ -44,12 +56,16 @@ public class BestResult implements Comparable {
         this.location = location;
     }
 
-    public void setPlace(String place) {
+    public void setPlace(int place) {
         this.place = place;
     }
 
     public void setTime(long time) {
         this.milliseconds = time;
+    }
+
+    public int getSwimmerId() {
+        return swimmerId;
     }
 
     @Override
