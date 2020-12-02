@@ -4,11 +4,11 @@ public class Chairman extends Person {
     private String password = "password";
 
     public String getPassword() {
-        return name;
+        return password;
     }
 
     public void setPassword(String newPassword) {
-        this.name = newPassword;
+        this.password = newPassword;
     }
 
     public void addCoach(String name, String surname, int age, String swimmStyle, String password) {
