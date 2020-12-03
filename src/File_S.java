@@ -17,21 +17,6 @@ public class File_S {
         pw = new PrintWriter(fw,true);
     }
 
-    public static void createFile() {
-
-        try {
-            File myObj = new File("file_S.txt");
-            if (myObj.createNewFile()) {
-                System.out.println("File_S created: " + myObj.getName());
-            } else {
-                System.out.println("File_S already exists.");
-            }
-        } catch (IOException e) {
-            System.out.println("An error occurred while creating File_S.");
-            e.printStackTrace();
-        }
-
-    }
     public void loadData() throws IOException{
         
         sc = new Scanner(file);
@@ -61,11 +46,10 @@ public class File_S {
                   swimmers.add(pS);
                   break;
                }
-            
                case "Elite":{
                   EliteSwimmer eS = new EliteSwimmer(id, swimStyle, name, surName, phone, email, age,wasNotified);
-                  swimmers.add((Swimmer)eS);
-               break;
+                  swimmers.add(eS);
+                  break;
                }
            }
             
@@ -83,15 +67,8 @@ public class File_S {
             System.out.println(swimmer.getId() + " " + swimmer.getName() + " " + swimmer.getSurname() + " " + swimmer.getAge() + " " + swimmer.getPhone() + " " + swimmer.getEmail() + " "+ swimmer.getMembershipStart() + " " + swimmer.getMembershipEnd() + " " + ((swimmer instanceof ActiveSwimmer)?"Active":(swimmer instanceof PassiveSwimmer)?"Passive":"Elite") + " " + swimmer.getSwimStyle() + " " + swimmer.getWasNotified() + " ");
         }
     }
-    public void deleteRecord(int index) throws IOException{
-        swimmers.remove(index);
-        eraseFile();
-        for(Swimmer swimmer : swimmers){
-            System.out.println(swimmer.getId() + " " + swimmer.getName() + " " + swimmer.getSurname() + " " + swimmer.getAge() + " " + swimmer.getPhone() + " " + swimmer.getEmail() + " "+ swimmer.getMembershipStart() + " " + swimmer.getMembershipEnd() + " " + swimmer.getType() + " " + swimmer.getSwimStyle() + " " + swimmer.getWasNotified() + " ");
-        }                
-    }
 
-    public void saveToFile(int id, String name, String surname, int age, int phone, String email, LocalDate membershipStart, LocalDate membershipEnd, String type, String swimStyle, boolean wasNotified){
+    public void saveToFile(){
         try {
             eraseFile();
         }
@@ -102,7 +79,39 @@ public class File_S {
         prepareForWriting();
         printHeader();
 
-        pw.println(id + " " + name + " " + surname + " " + age + " " + phone + " " + email + " " + membershipStart + " " + membershipEnd + " " + type + " " + swimStyle + " " + wasNotified + " ");
+        for(Swimmer swimmer:swimmers){
+            pw.printf(swimmer.getId() + "");
+            printSpaces(swimmer.getId() + "");
+            pw.printf(swimmer.getName());
+            printSpaces(swimmer.getName());
+            pw.printf(swimmer.getSurname());
+            printSpaces(swimmer.getSurname());
+            pw.printf(swimmer.getAge() + "");
+            printSpaces(swimmer.getAge() + "");
+            pw.printf(swimmer.getPhone());
+            printSpaces(swimmer.getPhone());
+            pw.printf(swimmer.getEmail());
+            printSpaces(swimmer.getEmail());
+            pw.printf(swimmer.getMembershipStart()+"");
+            printSpaces(swimmer.getMembershipStart()+"");
+            pw.printf(swimmer.getMembershipEnd() + "");
+            printSpaces(swimmer.getMembershipEnd() + "");
+            if(swimmer instanceof PassiveSwimmer) {
+                pw.printf("Passive");
+                printSpaces("Passive");
+            }else if(swimmer instanceof ActiveSwimmer){
+                pw.printf("Active");
+                printSpaces("Active");
+            }else{
+                pw.printf("Elite");
+                printSpaces("Elite");
+            }
+            pw.printf(swimmer.getSwimStyle() + "");
+            printSpaces(swimmer.getSwimStyle() + "");
+            pw.printf(swimmer.getWasNotified() + "");
+            printSpaces(swimmer.getWasNotified() + "");
+            pw.println();
+        }
         pw.close();
     
     }

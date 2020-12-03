@@ -14,12 +14,12 @@ public class File_C {
 
     private ArrayList<Coach> coaches = new ArrayList<Coach>();
 
-        public void createFile() throws IOException {
-            file = new File("coaches.txt");
-            if(!file.exists()) file.createNewFile();
-            fw = new FileWriter(file,true);
-            pw = new PrintWriter(fw,true);
-        }
+    public File_C() throws IOException {
+        file = new File("coaches.txt");
+        if(!file.exists()) file.createNewFile();
+        fw = new FileWriter(file,true);
+        pw = new PrintWriter(fw,true);
+    }
 
     public void loadData() throws IOException{
         sc = new Scanner(file);

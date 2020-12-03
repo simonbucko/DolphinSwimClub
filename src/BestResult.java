@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public class BestResult implements Comparable {
 
 
@@ -6,36 +8,40 @@ public class BestResult implements Comparable {
     private long milliseconds = 99999999;
     private int swimmerId;
     private Discipline discipline;
+    private LocalDate date;
 
 
-    public BestResult(Discipline discipline, int minutes, int seconds, int milliseconds, EliteSwimmer swimmer) {
+    public BestResult(Discipline discipline, LocalDate date, int minutes, int seconds, int milliseconds, EliteSwimmer swimmer) {
         this.discipline = discipline;
         this.location = "PRACTICE";
         this.place = 0;
         this.milliseconds = convertTimeToMilli(minutes, seconds, milliseconds);
         this.swimmerId = swimmer.getId();
+        this.date = date;
     }
 
-    public BestResult(Discipline discipline, String location, int place, int minutes, int seconds, int milliseconds, EliteSwimmer swimmer) {
-        this(discipline, minutes, seconds, milliseconds, swimmer);
+    public BestResult(Discipline discipline, LocalDate date, String location, int place, int minutes, int seconds, int milliseconds, EliteSwimmer swimmer) {
+        this(discipline, date, minutes, seconds, milliseconds, swimmer);
         this.location = location;
         this.place = place;
     }
 
-    public BestResult(Discipline discipline, String location, int place, long time, EliteSwimmer swimmer) {
+    public BestResult(Discipline discipline,LocalDate date, String location, int place, long time, EliteSwimmer swimmer) {
         this.discipline = discipline;
         this.swimmerId = swimmer.getId();
         this.milliseconds = time;
         this.location = location;
         this.place = place;
+        this.date = date;
     }
 
-    public BestResult(Discipline discipline, long time, EliteSwimmer swimmer) {
+    public BestResult(Discipline discipline,LocalDate date, long time, EliteSwimmer swimmer) {
         this.discipline = discipline;
         this.swimmerId = swimmer.getId();
         this.milliseconds = time;
         this.location = "PRACTICE";
         this.place = 0;
+        this.date = date;
     }
 
     public String convertMilliToString() {
@@ -83,6 +89,10 @@ public class BestResult implements Comparable {
 
     public void setDiscipline(Discipline discipline) {
         this.discipline = discipline;
+    }
+
+    public LocalDate getDate() {
+        return date;
     }
 
     @Override

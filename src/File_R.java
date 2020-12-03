@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 import java.util.Scanner;
 import java.util.TreeSet;
 
@@ -66,6 +67,7 @@ public class File_R {
         while(sc.hasNext()){
             int swimmerId = sc.nextInt();
             String discipline = sc.next();
+            LocalDate date = LocalDate.parse(sc.next());
             long time = sc.nextLong();
             String location = sc.next();
             int place = sc.nextInt();
@@ -74,31 +76,31 @@ public class File_R {
                 case "PRACTICE":{
                     switch (discipline){
                         case "FREESTYLE": {
-                            BestResult br = new BestResult(Discipline.FREESTYLE,time,es);
+                            BestResult br = new BestResult(Discipline.FREESTYLE,date, time,es);
                             es.getTrainingResult()[0] = br;
                             trainingResults[0].add(br);
                             break;
                         }
                         case "CRAWL": {
-                            BestResult br = new BestResult(Discipline.CRAWL,time,es);
+                            BestResult br = new BestResult(Discipline.CRAWL,date, time,es);
                             es.getTrainingResult()[1] = br;
                             trainingResults[1].add(br);
                             break;
                         }
                         case "BREASTSTROKE": {
-                            BestResult br = new BestResult(Discipline.BREASTSTROKE,time,es);
+                            BestResult br = new BestResult(Discipline.BREASTSTROKE, date, time,es);
                             es.getTrainingResult()[2] = br;
                             trainingResults[2].add(br);
                             break;
                         }
                         case "BACKSTROKE": {
-                            BestResult br = new BestResult(Discipline.BACKSTROKE,time,es);
+                            BestResult br = new BestResult(Discipline.BACKSTROKE, date, time,es);
                             es.getTrainingResult()[3] = br;
                             trainingResults[3].add(br);
                             break;
                         }
                         case "BUTTERFLY": {
-                            BestResult br = new BestResult(Discipline.BUTTERFLY,time,es);
+                            BestResult br = new BestResult(Discipline.BUTTERFLY,date,time,es);
                             es.getTrainingResult()[4] = br;
                             trainingResults[4].add(br);
                             break;
@@ -109,31 +111,31 @@ public class File_R {
                 default:{
                     switch (discipline){
                         case "FREESTYLE": {
-                            BestResult br = new BestResult(Discipline.FREESTYLE,location,place,time,es);
+                            BestResult br = new BestResult(Discipline.FREESTYLE,date,location,place,time,es);
                             es.getCompetitionResult()[0] = br;
                             competitionResults[0].add(br);
                             break;
                         }
                         case "CRAWL": {
-                            BestResult br = new BestResult(Discipline.CRAWL,location,place,time,es);
+                            BestResult br = new BestResult(Discipline.CRAWL,date,location,place,time,es);
                             es.getCompetitionResult()[1] = br;
                             competitionResults[1].add(br);
                             break;
                         }
                         case "BREASTSTROKE": {
-                            BestResult br = new BestResult(Discipline.BREASTSTROKE,location,place,time,es);
+                            BestResult br = new BestResult(Discipline.BREASTSTROKE,date,location,place,time,es);
                             es.getCompetitionResult()[2] = br;
                             competitionResults[2].add(br);
                             break;
                         }
                         case "BACKSTROKE": {
-                            BestResult br = new BestResult(Discipline.BACKSTROKE,location,place,time,es);
+                            BestResult br = new BestResult(Discipline.BACKSTROKE,date,location,place,time,es);
                             es.getCompetitionResult()[3] = br;
                             competitionResults[3].add(br);
                             break;
                         }
                         case "BUTTERFLY": {
-                            BestResult br = new BestResult(Discipline.BUTTERFLY,location,place,time,es);
+                            BestResult br = new BestResult(Discipline.BUTTERFLY,date,location,place,time,es);
                             es.getCompetitionResult()[4] = br;
                             competitionResults[4].add(br);
                             break;
@@ -154,6 +156,8 @@ public class File_R {
         printSpaces("SWIMMER_ID");
         pw.printf("DISCIPLINE");
         printSpaces("DISCIPLINE");
+        pw.printf("DATE");
+        printSpaces("DATE");
         pw.printf("TIME");
         printSpaces("TIME");
         pw.printf("LOCATION");

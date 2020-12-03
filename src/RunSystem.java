@@ -24,11 +24,15 @@ public class RunSystem {
 //            }
 //        }
         try {
+            File_C file_c = new File_C();
             File_S file_s = new File_S();
             File_R file_r = new File_R();
             file_s.loadData();
             file_r.loadData(file_s);
-            System.out.println(file_s.getEliteSwimmerById(1).getTrainingResult()[0].convertMilliToString());
+            file_r.printHeader();
+//            file_s.printAllData();
+//            file_s.getSwimmers().add(new EliteSwimmer(3,"Crawl","Mikkel","Verm","23233434","mikkel@gmail.com",25,true));
+//            file_s.saveToFile();
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -37,15 +37,17 @@ public class PrintScreen {
 
     public String getNewPassword(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("PLEASE INPUT YOUR NEW PASSWORD: ");
-        String password = sc.next();
-        System.out.println("PLEASE INPUT YOUR NEW PASSWORD AGAIN: ");
-        String retypedPassword = sc.next();
-        boolean match = true;
-//        do{
-//            if(!match)
-//        }
-        return "";
+        String password;
+        boolean notMatch = true;
+        do{
+            System.out.println("PLEASE INPUT YOUR NEW PASSWORD: ");
+            password = sc.next();
+            System.out.println("PLEASE INPUT YOUR NEW PASSWORD AGAIN: ");
+            String retypedPassword = sc.next();
+            if(password.equals(retypedPassword)) notMatch=false;
+            else System.out.println("YOUR PASSWORDS ARE NOT MATCHING, PLEASE TRY AGAIN: ");
+        }while (notMatch);
+        return password;
     }
 
     //MENU
