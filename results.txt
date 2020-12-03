@@ -1,0 +1,4 @@
+SWIMMER_ID                    DISCIPLINE                    TIME                          LOCATION                      PLACE                         
+1                             FREESTYLE                     1234                          PRACTICE                      0
+1                             FREESTYLE                     1354                          PRACTICE                      0
+1                             FREESTYLE                     1534                          PRACTICE                      0

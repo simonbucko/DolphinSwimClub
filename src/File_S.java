@@ -154,5 +154,13 @@ public class File_S {
     public ArrayList<Swimmer> getSwimmers() {
         return swimmers;
     }
-    
+
+    public EliteSwimmer getEliteSwimmerById(int id)
+    {
+        for(Swimmer swimmer : swimmers){
+            if(!(swimmer instanceof EliteSwimmer)) continue;
+            if(swimmer.getId() == id) return (EliteSwimmer)swimmer;
+        }
+        return null;
+    }
 }

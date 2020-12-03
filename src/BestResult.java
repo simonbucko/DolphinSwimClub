@@ -1,12 +1,5 @@
 public class BestResult implements Comparable {
 
-    enum Discipline {
-        FREESTYLE,
-        CRAWL,
-        BREASTSTROKE,
-        BACKSTROKE,
-        BUTTERFLY
-    }
 
     private String location;
     private int place;
@@ -17,7 +10,7 @@ public class BestResult implements Comparable {
 
     public BestResult(Discipline discipline, int minutes, int seconds, int milliseconds, EliteSwimmer swimmer) {
         this.discipline = discipline;
-        this.location = null;
+        this.location = "PRACTICE";
         this.place = 0;
         this.milliseconds = convertTimeToMilli(minutes, seconds, milliseconds);
         this.swimmerId = swimmer.getId();
@@ -27,6 +20,22 @@ public class BestResult implements Comparable {
         this(discipline, minutes, seconds, milliseconds, swimmer);
         this.location = location;
         this.place = place;
+    }
+
+    public BestResult(Discipline discipline, String location, int place, long time, EliteSwimmer swimmer) {
+        this.discipline = discipline;
+        this.swimmerId = swimmer.getId();
+        this.milliseconds = time;
+        this.location = location;
+        this.place = place;
+    }
+
+    public BestResult(Discipline discipline, long time, EliteSwimmer swimmer) {
+        this.discipline = discipline;
+        this.swimmerId = swimmer.getId();
+        this.milliseconds = time;
+        this.location = "PRACTICE";
+        this.place = 0;
     }
 
     public String convertMilliToString() {
@@ -66,6 +75,14 @@ public class BestResult implements Comparable {
 
     public int getSwimmerId() {
         return swimmerId;
+    }
+
+    public Discipline getDiscipline() {
+        return discipline;
+    }
+
+    public void setDiscipline(Discipline discipline) {
+        this.discipline = discipline;
     }
 
     @Override

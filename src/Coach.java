@@ -9,14 +9,6 @@ public class Coach extends Person {
         this.password = password;
     }
 
-    enum Discipline {
-        FREESTYLE,
-        CRAWL,
-        BREASTSTROKE,
-        BACKSTROKE,
-        BUTTERFLY
-    }
-
     enum ResultType {
         COMPETITION,
         TRAINING
@@ -67,32 +59,32 @@ public class Coach extends Person {
                 switch (discipline) {
                     case FREESTYLE: {
                         EliteSwimmer swimmer = (EliteSwimmer) fileS.getSwimmers().get(id);
-                        BestResult br = new BestResult(BestResult.Discipline.FREESTYLE,minutes,seconds,milliseconds,swimmer);
+                        BestResult br = new BestResult(Discipline.FREESTYLE,minutes,seconds,milliseconds,swimmer);
                         //input into set map
                         swimmer.getTrainingResult()[0] = br;
                         break;
                     }
                     case CRAWL: {
                         EliteSwimmer swimmer = (EliteSwimmer) fileS.getSwimmers().get(id);
-                        BestResult br = new BestResult(BestResult.Discipline.CRAWL,minutes,seconds,milliseconds,swimmer);
+                        BestResult br = new BestResult(Discipline.CRAWL,minutes,seconds,milliseconds,swimmer);
                         swimmer.getTrainingResult()[1] = br;
                         break;
                     }
                     case BREASTSTROKE: {
                         EliteSwimmer swimmer = (EliteSwimmer) fileS.getSwimmers().get(id);
-                        BestResult br = new BestResult(BestResult.Discipline.BREASTSTROKE,minutes,seconds,milliseconds,swimmer);
+                        BestResult br = new BestResult(Discipline.BREASTSTROKE,minutes,seconds,milliseconds,swimmer);
                         swimmer.getTrainingResult()[2] = br;
                         break;
                     }
                     case BACKSTROKE: {
                         EliteSwimmer swimmer = (EliteSwimmer) fileS.getSwimmers().get(id);
-                        BestResult br = new BestResult(BestResult.Discipline.BACKSTROKE,minutes,seconds,milliseconds,swimmer);
+                        BestResult br = new BestResult(Discipline.BACKSTROKE,minutes,seconds,milliseconds,swimmer);
                         swimmer.getTrainingResult()[3] = br;
                         break;
                     }
                     case BUTTERFLY: {
                         EliteSwimmer swimmer = (EliteSwimmer) fileS.getSwimmers().get(id);
-                        BestResult br = new BestResult(BestResult.Discipline.BUTTERFLY,minutes,seconds,milliseconds,swimmer);
+                        BestResult br = new BestResult(Discipline.BUTTERFLY,minutes,seconds,milliseconds,swimmer);
                         swimmer.getTrainingResult()[4] = br;
                         break;
                     }
@@ -103,29 +95,29 @@ public class Coach extends Person {
                 switch (discipline) {
                     case FREESTYLE: {
                         EliteSwimmer swimmer = (EliteSwimmer) fileS.getSwimmers().get(id);
-                        BestResult br = new BestResult(BestResult.Discipline.FREESTYLE,location,place,minutes,seconds,milliseconds,swimmer);
+                        BestResult br = new BestResult(Discipline.FREESTYLE,location,place,minutes,seconds,milliseconds,swimmer);
                         swimmer.getCompetitionResult()[0] = br;
                         break;
                     }
                     case CRAWL: {
                         EliteSwimmer swimmer = (EliteSwimmer) fileS.getSwimmers().get(id);
-                        BestResult br = new BestResult(BestResult.Discipline.CRAWL,location,place,minutes,seconds,milliseconds,swimmer);
+                        BestResult br = new BestResult(Discipline.CRAWL,location,place,minutes,seconds,milliseconds,swimmer);
                         swimmer.getCompetitionResult()[1] = br;
                     }
                     case BREASTSTROKE: {
                         EliteSwimmer swimmer = (EliteSwimmer) fileS.getSwimmers().get(id);
-                        BestResult br = new BestResult(BestResult.Discipline.BREASTSTROKE,location,place,minutes,seconds,milliseconds,swimmer);
+                        BestResult br = new BestResult(Discipline.BREASTSTROKE,location,place,minutes,seconds,milliseconds,swimmer);
                         swimmer.getCompetitionResult()[2] = br;
                         break;
                     }
                     case BACKSTROKE: {
                         EliteSwimmer swimmer = (EliteSwimmer) fileS.getSwimmers().get(id);
-                        BestResult br = new BestResult(BestResult.Discipline.BACKSTROKE,location,place,minutes,seconds,milliseconds,swimmer);
+                        BestResult br = new BestResult(Discipline.BACKSTROKE,location,place,minutes,seconds,milliseconds,swimmer);
                         swimmer.getCompetitionResult()[3] = br;
                     }
                     case BUTTERFLY: {
                         EliteSwimmer swimmer = (EliteSwimmer) fileS.getSwimmers().get(id);
-                        BestResult br = new BestResult(BestResult.Discipline.BUTTERFLY,location,place,minutes,seconds,milliseconds,swimmer);
+                        BestResult br = new BestResult(Discipline.BUTTERFLY,location,place,minutes,seconds,milliseconds,swimmer);
                         swimmer.getCompetitionResult()[4] = br;
                     }
                 }
