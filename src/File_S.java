@@ -17,7 +17,7 @@ public class File_S {
         pw = new PrintWriter(fw,true);
     }
 
-    public void loadData() throws IOException{
+    public void loadData(File_C file_c) throws IOException{
         
         sc = new Scanner(file);
         sc.nextLine();
@@ -49,6 +49,8 @@ public class File_S {
                case "Elite":{
                   EliteSwimmer eS = new EliteSwimmer(id, swimStyle, name, surName, phone, email, age,wasNotified);
                   swimmers.add(eS);
+                  if(age<18) file_c.getCoaches().get(0).getStudents().add(eS);
+                  else file_c.getCoaches().get(1).getStudents().add(eS);
                   break;
                }
            }

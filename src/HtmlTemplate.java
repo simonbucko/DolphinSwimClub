@@ -1,7 +1,9 @@
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class HtmlTemplate {
-    public static String getTemplate(String name, String surname){
+    public static String getTemplate(String name, String surname, LocalDate date){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
         return("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
                 "<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">\n" +
                 "<head>\n" +
@@ -110,7 +112,7 @@ public class HtmlTemplate {
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"h1 pb25\" style=\"color:#444444; font-family:'Merriweather', Georgia,serif; font-size:35px; line-height:42px; text-align:center; padding-bottom:25px;\">Dear " +name+ " " +surname+ ",</td>\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"text-center pb25\" style=\"color:#666666; font-family:Arial,sans-serif; font-size:16px; line-height:30px; text-align:center; padding-bottom:25px;\"> We are writing to you to kindly inform you, that your current membership with Dolphins Swim Club is about to expire on . Therefore, we would like to offer you one of our memberships.</td>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"text-center pb25\" style=\"color:#666666; font-family:Arial,sans-serif; font-size:16px; line-height:30px; text-align:center; padding-bottom:25px;\"> We are writing to you to kindly inform you, that your current membership with Dolphins Swim Club is about to expire on " + formatter.format(date) + ". Therefore, we would like to offer you one of our memberships.</td>\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<!-- Button -->\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
