@@ -425,10 +425,25 @@ public class PrintScreen {
                     break;
                 }
                 case 3:{
+                    System.out.println("[1] TRAINING RESULTS");
+                    System.out.println("[2] COMPETITION RESULTS");
+                    System.out.println("[3] BACK");
+                    int type = getChoice(3);
+                    if(type == 3) break;
+                    System.out.println("[1] FREESTYLE");
+                    System.out.println("[2] CRAWL");
+                    System.out.println("[3] BREASTSTROKE");
+                    System.out.println("[4] BACKSTROKE");
+                    System.out.println("[5] BUTTERFLY");
+                    System.out.println("[6] EXIT");
+                    int discipline = getChoice(6);
+                    if(discipline == 6) break;
+                    controller.file_r.printBestResults(type,discipline,controller.file_s);
                     break;
                 }
                 case 4:{
                     controller.currentLoggedCoach.setPassword(getNewPassword());
+                    controller.file_c.saveToFile();
                     System.out.println("PASSWORD CHANGED SUCCESSFULLY!");
                     try {
                         Thread.sleep(2000);

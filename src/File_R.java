@@ -188,4 +188,32 @@ public class File_R {
     public TreeSet[] getTrainingResults() {
         return trainingResults;
     }
+
+    private void printResultData(BestResult br, File_S file_s){
+        System.out.println(br.getSwimmerId() + " "+file_s.getSwimmerById(br.getSwimmerId()).getName()+" "+file_s.getSwimmerById(br.getSwimmerId()).getSurname()+" " + br.convertMilliToString() + " " +br.getDate()+ " " +br.getLocation()+" "+br.getPlace());
+    }
+
+    public void printBestResults(int type, int discipline , File_S file_s){
+        int counter = 5;
+        switch (type){
+            case 1:{
+                for(Object result : trainingResults[discipline-1]){
+                    BestResult br = (BestResult)result;
+                    printResultData(br,file_s);
+                    counter--;
+                    if (counter == 5) break;
+                }
+                break;
+            }
+            case 2:{
+                for(Object result : competitionResults[discipline-1]){
+                    BestResult br = (BestResult)result;
+                    printResultData(br,file_s);
+                    counter--;
+                    if (counter == 5) break;
+                }
+                break;
+            }
+        }
+    }
 }
