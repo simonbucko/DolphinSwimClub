@@ -1,4 +1,4 @@
 SWIMMER_ID                    DISCIPLINE                    DATE                          TIME                          LOCATION                      PLACE                         
 1                             FREESTYLE                     2020-06-21                    1234                          PRACTICE                      0
 1                             BREASTSTROKE                  2020-07-21                    1354                          PRACTICE                      0
-1                             BACKSTROKE                    2020-09-21                    1534                          PRACTICE                      0SWIMMER_ID                    DISCIPLINE                    DATE                          TIME                          LOCATION                      PLACE                         
+1                             BACKSTROKE                    2020-09-21                    1534                          PRACTICE                      0

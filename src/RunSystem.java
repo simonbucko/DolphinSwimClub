@@ -29,7 +29,7 @@ public class RunSystem {
             File_R file_r = new File_R();
             file_s.loadData();
             file_r.loadData(file_s);
-            file_r.printHeader();
+            file_c.loadData();
 //            file_s.printAllData();
 //            file_s.getSwimmers().add(new EliteSwimmer(3,"Crawl","Mikkel","Verm","23233434","mikkel@gmail.com",25,true));
 //            file_s.saveToFile();

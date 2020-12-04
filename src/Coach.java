@@ -54,6 +54,10 @@ public class Coach extends Person {
         return students;
     }
 
+    public void printAllData(){
+        System.out.println(id + " " + super.getName() + " " + super.getSurname() + " " + super.getAge() + " "+ super.getPhone() + " " + super.getEmail() + " "+ swimmingStyle );
+    }
+
     public void registerResult(File_S fileS, File_R file_r, int id, ResultType type, Discipline discipline, int minutes, int seconds, int milliseconds, String location, int place) {
         switch (type) {
             case TRAINING: {

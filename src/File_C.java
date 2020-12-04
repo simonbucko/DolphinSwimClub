@@ -29,9 +29,12 @@ public class File_C {
             String name = sc.next();
             String surName = sc.next();
             int age = sc.nextInt();
-            int phone = sc.nextInt();
+            String phone = sc.next();
             String email = sc.next();
             String swimStyle = sc.next();
+            String password = sc.next();
+            Coach co = new Coach(id,swimStyle,name,surName,phone,email,age,password);
+            coaches.add(co);
         }
     }
 
@@ -57,36 +60,38 @@ public class File_C {
 
     }
 
-    public void saveToFile(int id, String name, String surname, int age, int phone, String email, String swimStyle){
+    public void saveToFile(){
         try {
             eraseFile();
         }
         catch(IOException e) {
             e.printStackTrace();
         }
-
-        prepareForWriting();
         printHeader();
+        for (Coach coach : coaches){
+            pw.printf(coach.getId() + "");
+            printSpaces(coach.getId() + "");
+            pw.printf(coach.getName());
+            printSpaces(coach.getName());
+            pw.printf(coach.getSurname());
+            printSpaces(coach.getSurname());
+            pw.printf(coach.getAge() + "");
+            printSpaces(coach.getAge() + "");
+            pw.printf(coach.getPhone());
+            printSpaces(coach.getPhone());
+            pw.printf(coach.getEmail());
+            printSpaces(coach.getEmail());
+            pw.printf(coach.getSwimmingStyle());
+            printSpaces(coach.getSwimmingStyle());
+            pw.printf(coach.getPassword());
+            printSpaces(coach.getPassword());
+            pw.println();
+        }
 
-        pw.println(id + " " + name + " " + surname + " " + age + " " + phone + " " + email + " " + swimStyle + " " );
         pw.close();
 
     }
 
-    public void prepareForWriting(){
-        try{
-            fw = new FileWriter(file, true);
-        }catch (IOException e){
-            System.out.println("An error occurred while creating a file writer for a file_C.txt.");
-            e.printStackTrace();
-        }
-        try {
-            pw = new PrintWriter(fw,true);
-        }catch (Exception e){
-            System.out.println("An error occurred while creating a print writer for a file_C.txt.");
-            e.printStackTrace();
-        }
-    }
 
     public void printSpaces(String word){
         int ID_OFFSET = 30;
@@ -109,6 +114,8 @@ public class File_C {
         printSpaces("EMAIL");
         pw.printf("SWIM STYLE");
         printSpaces("SWIM STYLE");
+        pw.printf("PASSWORD");
+        printSpaces("PASSWORD");
         pw.println();
     }
 
