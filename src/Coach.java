@@ -67,6 +67,7 @@ public class Coach extends Person {
                         BestResult br = new BestResult(Discipline.FREESTYLE, LocalDate.now(), minutes,seconds,milliseconds,swimmer);
                         file_r.getTrainingResults()[0].add(br);
                         swimmer.getTrainingResult()[0] = br;
+                        file_r.saveToFile();
                         break;
                     }
                     case CRAWL: {
@@ -74,6 +75,7 @@ public class Coach extends Person {
                         BestResult br = new BestResult(Discipline.CRAWL, LocalDate.now(),minutes,seconds,milliseconds,swimmer);
                         file_r.getTrainingResults()[1].add(br);
                         swimmer.getTrainingResult()[1] = br;
+                        file_r.saveToFile();
                         break;
                     }
                     case BREASTSTROKE: {
@@ -81,6 +83,7 @@ public class Coach extends Person {
                         BestResult br = new BestResult(Discipline.BREASTSTROKE, LocalDate.now(),minutes,seconds,milliseconds,swimmer);
                         file_r.getTrainingResults()[2].add(br);
                         swimmer.getTrainingResult()[2] = br;
+                        file_r.saveToFile();
                         break;
                     }
                     case BACKSTROKE: {
@@ -88,6 +91,7 @@ public class Coach extends Person {
                         BestResult br = new BestResult(Discipline.BACKSTROKE, LocalDate.now(),minutes,seconds,milliseconds,swimmer);
                         file_r.getTrainingResults()[3].add(br);
                         swimmer.getTrainingResult()[3] = br;
+                        file_r.saveToFile();
                         break;
                     }
                     case BUTTERFLY: {
@@ -95,6 +99,7 @@ public class Coach extends Person {
                         BestResult br = new BestResult(Discipline.BUTTERFLY, LocalDate.now(),minutes,seconds,milliseconds,swimmer);
                         file_r.getTrainingResults()[4].add(br);
                         swimmer.getTrainingResult()[4] = br;
+                        file_r.saveToFile();
                         break;
                     }
                 }
@@ -107,6 +112,7 @@ public class Coach extends Person {
                         BestResult br = new BestResult(Discipline.FREESTYLE, LocalDate.now(),location,place,minutes,seconds,milliseconds,swimmer);
                         file_r.getCompetitionResults()[0].add(br);
                         swimmer.getCompetitionResult()[0] = br;
+                        file_r.saveToFile();
                         break;
                     }
                     case CRAWL: {
@@ -114,12 +120,15 @@ public class Coach extends Person {
                         BestResult br = new BestResult(Discipline.CRAWL, LocalDate.now(),location,place,minutes,seconds,milliseconds,swimmer);
                         file_r.getCompetitionResults()[1].add(br);
                         swimmer.getCompetitionResult()[1] = br;
+                        file_r.saveToFile();
+                        break;
                     }
                     case BREASTSTROKE: {
                         EliteSwimmer swimmer = (EliteSwimmer) fileS.getSwimmers().get(id);
                         BestResult br = new BestResult(Discipline.BREASTSTROKE, LocalDate.now(),location,place,minutes,seconds,milliseconds,swimmer);
                         file_r.getCompetitionResults()[2].add(br);
                         swimmer.getCompetitionResult()[2] = br;
+                        file_r.saveToFile();
                         break;
                     }
                     case BACKSTROKE: {
@@ -127,12 +136,16 @@ public class Coach extends Person {
                         BestResult br = new BestResult(Discipline.BACKSTROKE, LocalDate.now(),location,place,minutes,seconds,milliseconds,swimmer);
                         file_r.getCompetitionResults()[3].add(br);
                         swimmer.getCompetitionResult()[3] = br;
+                        file_r.saveToFile();
+                        break;
                     }
                     case BUTTERFLY: {
                         EliteSwimmer swimmer = (EliteSwimmer) fileS.getSwimmers().get(id);
                         BestResult br = new BestResult(Discipline.BUTTERFLY, LocalDate.now(),location,place,minutes,seconds,milliseconds,swimmer);
                         file_r.getCompetitionResults()[4].add(br);
                         swimmer.getCompetitionResult()[4] = br;
+                        file_r.saveToFile();
+                        break;
                     }
                 }
                 break;

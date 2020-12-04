@@ -28,6 +28,8 @@ public class File_R {
         printSpaces(result.getSwimmerId()+"");
         pw.printf(result.getDiscipline() + "");
         printSpaces(result.getDiscipline() + "");
+        pw.printf(result.getDate() + "");
+        printSpaces(result.getDate() + "");
         pw.printf(result.getTime() + "");
         printSpaces(result.getTime() + "");
         pw.printf(result.getLocation());
@@ -38,7 +40,13 @@ public class File_R {
     }
 
     public void saveToFile(){
-    //training result
+        try {
+            eraseFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        printHeader();
+        //training result
         for(int i = 0; i < 5; i++){
             for(Object result : trainingResults[i]){
                 BestResult br = (BestResult)result;

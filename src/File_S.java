@@ -36,17 +36,17 @@ public class File_S {
             
             switch(type){
             
-               case "Active":{
+               case "ACTIVE":{
                   ActiveSwimmer aS = new ActiveSwimmer(id, swimStyle, name, surName, phone, email, age,wasNotified);
                   swimmers.add(aS);
                   break;   
                }    
-               case "Passive":{
+               case "PASSIVE":{
                   PassiveSwimmer pS = new PassiveSwimmer(id, swimStyle, name, surName, phone, email, age,wasNotified);
                   swimmers.add(pS);
                   break;
                }
-               case "Elite":{
+               case "ELITE":{
                   EliteSwimmer eS = new EliteSwimmer(id, swimStyle, name, surName, phone, email, age,wasNotified);
                   swimmers.add(eS);
                   if(age<18) file_c.getCoaches().get(0).getStudents().add(eS);
@@ -99,14 +99,14 @@ public class File_S {
             pw.printf(swimmer.getMembershipEnd() + "");
             printSpaces(swimmer.getMembershipEnd() + "");
             if(swimmer instanceof PassiveSwimmer) {
-                pw.printf("Passive");
-                printSpaces("Passive");
+                pw.printf("PASSIVE");
+                printSpaces("PASSIVE");
             }else if(swimmer instanceof ActiveSwimmer){
-                pw.printf("Active");
-                printSpaces("Active");
+                pw.printf("ACTIVE");
+                printSpaces("ACTIVE");
             }else{
-                pw.printf("Elite");
-                printSpaces("Elite");
+                pw.printf("ELITE");
+                printSpaces("ELITE");
             }
             pw.printf(swimmer.getSwimStyle() + "");
             printSpaces(swimmer.getSwimStyle() + "");
@@ -171,6 +171,15 @@ public class File_S {
         for(Swimmer swimmer : swimmers){
             if(!(swimmer instanceof EliteSwimmer)) continue;
             if(swimmer.getId() == id) return (EliteSwimmer)swimmer;
+        }
+        return null;
+    }
+
+
+    public Swimmer getSwimmerById(int id)
+    {
+        for(int i=0; i<swimmers.size(); i++) {
+            if(swimmers.get(i).getId() == id) return swimmers.get(i);
         }
         return null;
     }
