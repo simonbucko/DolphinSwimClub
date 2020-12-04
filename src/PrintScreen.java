@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class PrintScreen {
@@ -112,6 +113,7 @@ public class PrintScreen {
             if(inCorrectId)System.out.println("ID IS INVALID OR DOES NOT EXIST IN DATABASE, PLEASE TRY AGAIN OR TYPE 'Q' TO EXIT:");
             if(sc.hasNextInt()) {
                 id = sc.nextInt();
+                inCorrectId = false;
                 if(file_s.getSwimmerById(id) == null) inCorrectId = true;
             }
             else {
@@ -460,6 +462,67 @@ public class PrintScreen {
                 controller.currentLoggedCoach = null;
                 break;
             }
+        }
+    }
+    //treasurer
+    public boolean printLogInTreasurer(String password){
+        System.out.println("WELCOME TREASURER, TO CONTINUE TYPE YOUR PASSWORD OR TYPE 'Q' TO QUIT");
+        Scanner sc = new Scanner(System.in);
+        boolean inCorrectPass = false;
+        String inputPassword;
+        do {
+            if(inCorrectPass) System.out.println("Your password is not correct, try it again");
+            inputPassword = sc.next();
+            inCorrectPass = true;
+        }while (!(password.equals(inputPassword)) && !(inputPassword.equals("Q")) && !(inputPassword.equals("q")));
+        return password.equals(inputPassword);
+    }
+
+    public void startTreasurerMenu(Controller controller){
+        for(;;){
+            System.out.println("PLEASE SELECT ONE OF THE OPTIONS: ");
+            System.out.println("[1] Update membership");
+            System.out.println("[2] Change the password");
+            System.out.println("[3] Exit");
+            int choice = getChoice(3);
+            boolean exit = false;
+            Scanner sc = new Scanner(System.in);
+            switch (choice){
+                case 1:{
+                    System.out.println("PLEASE INPUT MEMBERS ID: ");
+                    int id = getSwimmerId(controller.file_s);
+                    if(id == -1) {
+                        break;
+                    }
+                    System.out.println("PLEASE INPUT STARTING DATE OF MEMBERSHIP IN FORMAT YYYY-MM-DD: ");
+                    LocalDate date = LocalDate.parse(sc.next());
+                    controller.file_s.getSwimmerById(id).setMembershipStart(date);
+                    controller.file_s.getSwimmerById(id).setMembershipEnd(date.plusMonths(12));
+                    controller.file_s.saveToFile();
+                    System.out.println("MEMBERSHIP CHANGED SUCCESSFULLY!");
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case 2:{
+                    controller.treasurer.setPassword(getNewPassword());
+                    System.out.println("PASSWORD CHANGED SUCCESSFULLY!");
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case 3:{
+                    exit = true;
+                    break;
+                }
+            }
+            if(exit)break;
         }
     }
 }

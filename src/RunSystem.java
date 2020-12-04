@@ -22,7 +22,7 @@ public class RunSystem {
                 }
                 //treasurer menu
                 case 3:{
-
+                    if(ps.printLogInTreasurer(controller.treasurer.getPassword())) ps.startTreasurerMenu(controller);
                     break;
                 }
             }

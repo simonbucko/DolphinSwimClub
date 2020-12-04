@@ -56,6 +56,11 @@ public abstract class Swimmer extends Person {
     public void setMembershipStart(LocalDate sD) {
         this.membershipStart = sD;
     }
+
+    public void setMembershipEnd(LocalDate membershipEnd) {
+        this.membershipEnd = membershipEnd;
+    }
+
     public LocalDate getMembershipStart() {
         return membershipStart;
     }
