@@ -35,6 +35,36 @@ public abstract class Swimmer extends Person {
         this.wasNotified = wasNotified;
     }
 
+    public Swimmer(int id, String swimStyle, String name, String surname, String phone, String email, int age, LocalDate membershipStart, boolean wasNotified) {
+        super(name, surname, phone, email, age);
+        this.id = id;
+        switch (swimStyle){
+            case "FREESTYLE": {
+                this.swimStyle = Discipline.FREESTYLE;
+                break;
+            }
+            case "CRAWL": {
+                this.swimStyle = Discipline.CRAWL;
+                break;
+            }
+            case "BREASTSTROKE": {
+                this.swimStyle = Discipline.BREASTSTROKE;
+                break;
+            }
+            case "BACKSTROKE": {
+                this.swimStyle = Discipline.BACKSTROKE;
+                break;
+            }
+            case "BUTTERFLY": {
+                this.swimStyle = Discipline.BUTTERFLY;
+                break;
+            }
+        }
+        this.wasNotified = wasNotified;
+        this.membershipStart = membershipStart;
+        this.membershipEnd = getMembershipStart().plusMonths(12);
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -56,11 +86,9 @@ public abstract class Swimmer extends Person {
     public void setMembershipStart(LocalDate sD) {
         this.membershipStart = sD;
     }
-
     public void setMembershipEnd(LocalDate membershipEnd) {
         this.membershipEnd = membershipEnd;
     }
-
     public LocalDate getMembershipStart() {
         return membershipStart;
     }
@@ -70,4 +98,13 @@ public abstract class Swimmer extends Person {
     public void printData() {
         System.out.println(this.id + " " + getName() + " " + getSurname() + " " + getAge() + " " + swimStyle + " " + getEmail() + " " + getPhone());
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Swimmer swimmer = (Swimmer) o;
+        return id == swimmer.id;
+    }
+
 }

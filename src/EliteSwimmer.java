@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class EliteSwimmer extends Swimmer {
@@ -8,6 +9,10 @@ public class EliteSwimmer extends Swimmer {
 
    public EliteSwimmer(int id, String swimStyle, String name, String surname, String phone, String email, int age, boolean wasNotified) {
       super(id, swimStyle, name, surname, phone, email, age, wasNotified);
+   }
+
+   public EliteSwimmer(int id, String swimStyle, String name, String surname, String phone, String email, int age, LocalDate membershipStart, boolean wasNotified) {
+      super(id,swimStyle,name, surname, phone, email, age,membershipStart,wasNotified);
    }
 
    public BestResult[] getTrainingResult() {

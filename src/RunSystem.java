@@ -1,10 +1,9 @@
-import java.io.IOException;
-import java.util.Arrays;
 
 public class RunSystem {
     public static void main(String[] args) {
         PrintScreen ps = new PrintScreen();
         Controller controller = new Controller();
+        controller.sendNotifications();
         for(;;){
             ps.printMenu();
             int choice = ps.getChoice(3);

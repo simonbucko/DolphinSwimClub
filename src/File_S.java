@@ -37,17 +37,17 @@ public class File_S {
             switch(type){
             
                case "ACTIVE":{
-                  ActiveSwimmer aS = new ActiveSwimmer(id, swimStyle, name, surName, phone, email, age,wasNotified);
+                  ActiveSwimmer aS = new ActiveSwimmer(id, swimStyle, name, surName, phone, email, age,membershipStart,wasNotified);
                   swimmers.add(aS);
                   break;   
                }    
                case "PASSIVE":{
-                  PassiveSwimmer pS = new PassiveSwimmer(id, swimStyle, name, surName, phone, email, age,wasNotified);
+                  PassiveSwimmer pS = new PassiveSwimmer(id, swimStyle, name, surName, phone, email, age,membershipStart,wasNotified);
                   swimmers.add(pS);
                   break;
                }
                case "ELITE":{
-                  EliteSwimmer eS = new EliteSwimmer(id, swimStyle, name, surName, phone, email, age,wasNotified);
+                  EliteSwimmer eS = new EliteSwimmer(id, swimStyle, name, surName, phone, email, age,membershipStart,wasNotified);
                   swimmers.add(eS);
                   if(age<18) file_c.getCoaches().get(0).getStudents().add(eS);
                   else file_c.getCoaches().get(1).getStudents().add(eS);
@@ -182,5 +182,12 @@ public class File_S {
             if(swimmers.get(i).getId() == id) return swimmers.get(i);
         }
         return null;
+    }
+
+    public void deleteRecords(ArrayList<Swimmer> delSwimmers){
+        for(Swimmer swimmer:delSwimmers){
+            swimmers.remove(swimmers.indexOf(swimmer));
+        }
+        saveToFile();
     }
 }
