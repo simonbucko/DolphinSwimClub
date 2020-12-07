@@ -197,21 +197,42 @@ public class File_R {
         int counter = 5;
         switch (type){
             case 1:{
-                for(Object result : trainingResults[discipline-1]){
-                    BestResult br = (BestResult)result;
-                    printResultData(br,file_s);
-                    counter--;
-                    if (counter == 5) break;
+                if(trainingResults[discipline-1].size() == 0){
+                    System.out.println("UNFORTUNATELY, THERE ARE NO TRAININGS RESULTS FOR THIS DISCIPLINE.");
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                else {
+                    for(Object result : trainingResults[discipline-1]){
+                        BestResult br = (BestResult)result;
+                        printResultData(br,file_s);
+                        counter--;
+                        if (counter == 5) break;
+                    }
                 }
                 break;
             }
             case 2:{
-                for(Object result : competitionResults[discipline-1]){
-                    BestResult br = (BestResult)result;
-                    printResultData(br,file_s);
-                    counter--;
-                    if (counter == 5) break;
+                if(competitionResults[discipline-1].size() == 0){
+                    System.out.println("UNFORTUNATELY, THERE ARE NO COMPETITION RESULTS FOR THIS DISCIPLINE.");
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
+                else {
+                    for(Object result : competitionResults[discipline-1]){
+                        BestResult br = (BestResult)result;
+                        printResultData(br,file_s);
+                        counter--;
+                        if (counter == 5) break;
+                    }
+                }
+
                 break;
             }
         }
